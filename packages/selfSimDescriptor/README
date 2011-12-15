@@ -1,0 +1,24 @@
+Self-similarity descriptor based on paper:
+Matching Local Self-Similarities across Images and Videos, Eli Shechtman and Michal Irani
+CVPR '07
+
+Uses the self-similarity feature descriptor written by 
+Varun Gulshan, varun@robots.ox.ac.uk
+
+There is a copy of that file in this repository under /imports. I have 
+extended it to include code that computes patch similarity over a given
+image. The correlation I'm using isn't exactly what was used in Shechtman
+and Irani because it was unclear what method they used. However, I did
+base it on Boiman and Irani (ICCV'05), and I used a sigmoid function.
+
+Use at your own risk.
+
+Usage:
+imageResp = getDescriptors('../../data/SelfSimilarities/Hearts/data_002.png',3);
+patchResp = getDescriptors('../../data/SelfSimilarities/Hearts/query_002.png',3,1);
+matches = locatePatch(patchResp{2},imageResp{2});
+matchMask = findMaxes(matches);
+imagesc(matchMask);
+
+
+
