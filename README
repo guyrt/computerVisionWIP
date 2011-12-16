@@ -1,3 +1,7 @@
+I'm going to give this a shot, and I'm not sure how it will go, but this is my research directory. It's a work in progress, but it's where all of my work in Computer Vision and HCI will end up. Obviously, that means there will be some mistakes and the like. Use at your own risk. 
+
+The source code in /projects should be cleaned up, mostly tested projects. I'll add test code as a I get time.
+
 This work contains open source projects from other labs. If you use code in GCut
 or GCut_example, see READMEs in those directories.
 
