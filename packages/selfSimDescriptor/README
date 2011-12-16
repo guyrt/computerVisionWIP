@@ -14,8 +14,9 @@ base it on Boiman and Irani (ICCV'05), and I used a sigmoid function.
 Use at your own risk.
 
 Usage:
-imageResp = getDescriptors('../../data/SelfSimilarities/Hearts/data_002.png',3);
-patchResp = getDescriptors('../../data/SelfSimilarities/Hearts/query_002.png',3,1);
+imageResp = getDescriptors('/path/to/data/SelfSimilarities/Hearts/data_002.png',3);
+% The third parameter lets you choose a subpatch.
+patchResp = getDescriptors('/path/to/data/SelfSimilarities/Hearts/query_002.png',3,1);
 matches = locatePatch(patchResp{2},imageResp{2});
 matchMask = findMaxes(matches);
 imagesc(matchMask);

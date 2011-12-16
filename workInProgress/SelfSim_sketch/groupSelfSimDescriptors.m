@@ -23,8 +23,8 @@ for i=1:limit
        break
    end
    mGrouping(i) = m;
-   i1 = mod(idx,length(selfCorrelations));
-   i2 = 1+floor(idx / length(selfCorrelations));
+   i2 = mod(idx-1,length(selfCorrelations)) + 1;
+   i1 = 1+floor((idx-1) / length(selfCorrelations));
    
    m1 = groupings(i1);
    m2 = groupings(i2);
