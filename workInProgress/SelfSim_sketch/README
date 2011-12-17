@@ -1,4 +1,0 @@
-Ideas:
-
-Identify patches for which p(patch|object) is high but it is not there (i.e. missings).
-To do this, we'll need to group "always" objects and "sometimes" patches.
