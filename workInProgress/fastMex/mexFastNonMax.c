@@ -6,10 +6,10 @@
 void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]) {
  
     /* Get image data */
-    int stride = 1;
     int threshold = 50;
     int width = mxGetN(prhs[0]);
     int height = mxGetM(prhs[0]);
+    int stride = height;
     unsigned char *img_data = mxGetData(prhs[0]);
 
  
