@@ -1,0 +1,7 @@
+In MATLAB, compile with
+mex -g mexFastNonMax.c fast_9.c fast.c nonmax.c
+
+I found that you need the -g.
+
+Mex wrapper by Richard T. Guy
+
