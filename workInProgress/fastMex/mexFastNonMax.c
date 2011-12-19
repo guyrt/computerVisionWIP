@@ -32,7 +32,4 @@ void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]) {
     mxFree(corners);
 
 }
-
-/* Note: stored in COL MAJOR ORDER. 
- * j+= height jumps down rows. */
-    
+  
