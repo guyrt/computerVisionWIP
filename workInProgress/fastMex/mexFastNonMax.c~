@@ -16,7 +16,7 @@ void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]) {
     
     int numCorners = 0;
     corners = fast9_detect_nonmax(img_data, height, width, stride, threshold, &numCorners);
-    
+        
     /* Create (temporary) output the array */
     int *output;
     int dims[2] = {2,numCorners};
@@ -24,12 +24,12 @@ void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]) {
     output = mxGetData(plhs[0]);
         
     int j;
-    for (j=0;j<2*numCorners;j+=2){
+    for (j=0;j<numCorners;j+=2){
         output[j]=corners[j/2].x;
         output[j+1] = corners[j/2].y;
     }
     
-    mxFree(corners);
+    
 
 }
 
