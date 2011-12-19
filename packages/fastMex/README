@@ -1,0 +1,8 @@
+In MATLAB, compile with
+mex  mexFastNonMax.c fast_9.c fast.c nonmax.c
+
+Run with 
+fp = fastFeaturePoints(img);
+
+Mex wrapper by Richard T. Guy
+
