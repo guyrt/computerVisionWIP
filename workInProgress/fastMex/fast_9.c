@@ -2959,7 +2959,7 @@ static void make_offsets(int pixel[], int row_stride)
 
 int* fast9_score(const byte* i, int stride, xy* corners, int num_corners, int b)
 {	
-	int* scores = (int*)malloc(sizeof(int)* num_corners);
+	int* scores = (int*)mxMalloc(sizeof(int)* num_corners);
 	int n;
 
 	int pixel[16];
@@ -2980,7 +2980,7 @@ xy* fast9_detect(const byte* im, int xsize, int ysize, int stride, int b, int* r
 	int pixel[16];
 	int x, y;
 
-	ret_corners = (xy*)malloc(sizeof(xy)*rsize);
+	ret_corners = (xy*)mxMalloc(sizeof(xy)*rsize);
 	make_offsets(pixel, stride);
 
 	for(y=3; y < ysize - 3; y++)
@@ -5894,7 +5894,7 @@ xy* fast9_detect(const byte* im, int xsize, int ysize, int stride, int b, int* r
 			if(num_corners == rsize)
 			{
 				rsize*=2;
-				ret_corners = (xy*)realloc(ret_corners, sizeof(xy)*rsize);
+				ret_corners = (xy*)mxRealloc(ret_corners, sizeof(xy)*rsize);
 			}
 			ret_corners[num_corners].x = x;
 			ret_corners[num_corners].y = y;

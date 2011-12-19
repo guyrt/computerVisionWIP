@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "fast.h"
+#include "mex.h"
 
 
 #define Compare(X, Y) ((X)>=(Y))
@@ -25,13 +26,13 @@ xy* nonmax_suppression(const xy* corners, const int* scores, int num_corners, in
 		return 0;
 	}
 
-	ret_nonmax = (xy*)malloc(num_corners * sizeof(xy));
+	ret_nonmax = (xy*)mxMalloc(num_corners * sizeof(xy));
 
 	/* Find where each row begins
 	   (the corners are output in raster scan order). A beginning of -1 signifies
 	   that there are no corners on that row. */
 	last_row = corners[num_corners-1].y;
-	row_start = (int*)malloc((last_row+1)*sizeof(int));
+	row_start = (int*)mxMalloc((last_row+1)*sizeof(int));
 
 	for(i=0; i < last_row+1; i++)
 		row_start[i] = -1;
@@ -110,7 +111,7 @@ xy* nonmax_suppression(const xy* corners, const int* scores, int num_corners, in
 			;
 	}
 
-	free(row_start);
+	mxFree(row_start);
 	*ret_num_nonmax = num_nonmax;
 	return ret_nonmax;
 }

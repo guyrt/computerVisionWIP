@@ -13,8 +13,8 @@ xy* fast9_detect_nonmax(const byte* im, int xsize, int ysize, int stride, int b,
 	scores = fast9_score(im, stride, corners, num_corners, b);
 	nonmax = nonmax_suppression(corners, scores, num_corners, ret_num_corners);
 
-	free(corners);
-	free(scores);
+	mxFree(corners);
+	mxFree(scores);
 
 	return nonmax;
 }
