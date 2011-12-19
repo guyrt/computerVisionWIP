@@ -6,11 +6,11 @@
 void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]) {
  
     /* Get image data */
-    int threshold = 50;
     int width = mxGetN(prhs[0]);
     int height = mxGetM(prhs[0]);
     int stride = height;
     unsigned char *img_data = mxGetData(prhs[0]);
+    int threshold = mxGetScalar(prhs[1]);
  
     xy* corners;
     
@@ -25,8 +25,8 @@ void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]) {
         
     int j;
     for (j=0;j<2*numCorners;j+=2){
-        output[j]=corners[j/2].x;
-        output[j+1] = corners[j/2].y;
+        output[j]=corners[j/2].y;
+        output[j+1] = corners[j/2].x;
     }
     
     mxFree(corners);
