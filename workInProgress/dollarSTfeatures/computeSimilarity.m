@@ -1,4 +1,4 @@
-function [classSimMatrix simMatrix] = computeSimilarity(patchSet, classVector)
+function simMatrix = computeSimilarity(patchSet)
 
 %%
 % Compute the self-similarity of each set of clusters using normxcorr2,
@@ -7,10 +7,8 @@ function [classSimMatrix simMatrix] = computeSimilarity(patchSet, classVector)
 %
 % Input: 
 %   patchSet: p x p x N set of vectorized patches.
-%   classVector: N x 1 set of class labels.
+%
 % Return:
-%   classSimMatrix: c x c similarity matrix for number of unique classes.
-%                   The lower triangle holds counts.
 %   simMatrix: N x N upper triangular matrix of similarities.   
 %
 % Author: Richard T. Guy
@@ -31,18 +29,3 @@ for i = 1:N
     end
 end
 
-uniqueClasses = unique(classVector);
-classSimMatrix = zeros(length(uniqueClasses));
-
-for i=1:length(uniqueClasses)
-    c1 = uniqueClasses(i);
-    c1Set = classVector == c1;
-    for j = i+1:length(uniqueClasses)
-        c2 = uniqueClasses(j);
-        c2Set = classVector == c2;
-        m = simMatrix(c1Set,c2Set);
-        
-        classSimMatrix(i,j) = classSimMatrix(i,j) + sum(m(:));
-        classSimMatrix(j,i) = classSimMatrix(j,i) + 1;
-    end
-end
