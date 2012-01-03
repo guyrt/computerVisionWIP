@@ -21,8 +21,9 @@ center = (p - 1) / 2; % Assume that sz is odd.
 simMatrix = zeros(size(patchSet,3));
 
 for i = 1:N
-    for j=i+1:N
-        cc = normxcorr2(patchSet(:,:,i), patchSet(:,:,j));
+    patchI = patchSet(:,:,i); % separate this one out to avoid communication overhead.
+    parfor j=i+1:N
+        cc = normxcorr2(patchI, patchSet(:,:,j));
         cc = cc(center - 2:center+2,center-2:center+2);
         m = max(cc(:));
         simMatrix(i,j) = m; % ensure nonzero for packing.
