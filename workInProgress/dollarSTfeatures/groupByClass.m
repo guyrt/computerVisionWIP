@@ -1,4 +1,4 @@
-function [classVector vecHistory] = sumByClass(simMatrix, classVector, mergeThresh)
+function [classVector vecHistory] = groupByClass(simMatrix, classVector, mergeThresh)
 
 %%
 % Cluster the self-similarity matrix by repeatedly grabbing clusters with
@@ -22,7 +22,7 @@ end
 oldCV = classVector;
 vecHistory = classVector(:);
 while 1
-    classVector = groupByClass(simMatrix, classVector, mergeThresh);
+    classVector = innerGroupByClass(simMatrix, classVector, mergeThresh);
     vecHistory = [vecHistory classVector'];
     
     if max(abs(classVector-oldCV)) == 0
@@ -33,7 +33,7 @@ end
 
 end % fxn
 
-function classVector = groupByClass(simMatrix, classVector, mergeThresh)
+function classVector = innerGroupByClass(simMatrix, classVector, mergeThresh)
 
 uniqueClasses = unique(classVector);
 classSimMatrix = zeros(length(uniqueClasses));
