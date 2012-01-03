@@ -9,7 +9,8 @@ function simMatrix = computeSimilarity(patchSet)
 %   patchSet: p x p x N set of vectorized patches.
 %
 % Return:
-%   simMatrix: N x N upper triangular matrix of similarities.   
+%   simMatrix: "N choose 2" by 1 vector of similiarities corresponding to a
+%   packed, upper triangular matrix of similarities.
 %
 % Author: Richard T. Guy
 %
@@ -24,8 +25,10 @@ for i = 1:N
         cc = normxcorr2(patchSet(:,:,i), patchSet(:,:,j));
         cc = cc(center - 2:center+2,center-2:center+2);
         m = max(cc(:));
-        simMatrix(i,j) = m;
-        simMatrix(j,i) = m;
+        simMatrix(i,j) = m; % ensure nonzero for packing.
     end
 end
+
+%simMatrix = simMatrix(simMatrix > 0);
+%simMatrix = simMatrix - eps; % undo nonzero check.
 
