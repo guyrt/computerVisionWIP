@@ -16,15 +16,17 @@ function simMatrix = computeSimilarity(patchSet)
 %
 
 p = size(patchSet,1);
-N = size(patchSet,3);
+p2 =size(patchSet,3);
+N = size(patchSet,4);
 center = (p - 1) / 2; % Assume that sz is odd.
-simMatrix = zeros(size(patchSet,3));
+center2 = (p2-1)/2;
+simMatrix = zeros(N);
 
 for i = 1:N
     patchI = patchSet(:,:,:,i); % separate this one out to avoid communication overhead.
-    for j=i+1:N
+    parfor j=i+1:N
         cc = normxcorrn(patchI, patchSet(:,:,:,j));
-        cc = cc(center - 2:center+2,center-2:center+2,center-2:center);
+        cc = cc(center - 2:center+2,center-2:center+2,center2-2:center2+2);
         m = max(cc(:));
         simMatrix(i,j) = m; % ensure nonzero for packing.
     end
