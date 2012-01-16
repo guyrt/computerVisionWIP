@@ -9,3 +9,10 @@
 %    vals(i) is the value of the metric at that point.
 %    cubiods(:,:,:,i) is the value set at the cuboid.
 %    V is an optional image.
+
+% Plot definitions:
+
+
+
+
+% Goal 1: identify similar framesets by 
