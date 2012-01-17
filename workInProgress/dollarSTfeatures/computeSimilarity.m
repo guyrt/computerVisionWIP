@@ -23,6 +23,7 @@ center2 = (p2-1)/2;
 simMatrix = zeros(N);
 
 for i = 1:N
+    fprintf('working on iteration %d of %d\n',i,N);
     patchI = patchSet(:,:,:,i); % separate this one out to avoid communication overhead.
     parfor j=i+1:N
         cc = normxcorrn(patchI, patchSet(:,:,:,j));

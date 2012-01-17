@@ -12,7 +12,5 @@
 
 % Plot definitions:
 
-
-
-
-% Goal 1: identify similar framesets by 
+% Goal 1: identify similar framesets by Shechtman and Irani (for now - this
+% one is fast.)
