@@ -1,7 +1,7 @@
 function flatCuboids = flattenCuboids(cuboids)
 
-% Flatten cuboids. Also, get 3-D gradient. Returns a matrix where each row
-% is a cuboid.
+% Flatten cuboids into 3-D gradient. Returns a matrix where each row
+% is a gradient cuboid.
 
 sz = size(cuboids);
 flatCuboids = zeros(sz(4), 3*prod(sz(1:3)));
