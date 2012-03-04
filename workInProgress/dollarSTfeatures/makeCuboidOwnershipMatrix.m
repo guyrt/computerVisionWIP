@@ -4,13 +4,12 @@ function ownership = makeCuboidOwnershipMatrix(numFrames, cuboidLocations, dendr
 % m(i,j) equal to the number of cuboids in dendrogram arm
 % j that intersect frame i.
 
-ownership = zeros(numFrames, max(dendrogramArm));
+mx = max(dendrogramArm);
+ownership = zeros(numFrames, mx);
 
 dendrogramArm = dendrogramArm(:);
 
 for i=1:numFrames
     cuboids = abs(cuboidLocations-i) < 9;
-    for j=1:max(dendrogramArm)
-        ownership(i,j) = sum(dendrogramArm(cuboids) == j);
-    end
+    ownership(i,:) = hist(dendrogramArm(cuboids),[1:mx]);
 end
