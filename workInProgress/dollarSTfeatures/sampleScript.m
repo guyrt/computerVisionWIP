@@ -27,15 +27,13 @@ videoHistogramSize = 4;
 zo = linkage(ownership,'ward','euclidean');
 [do1,do2,do3] = dendrogram(zo,videoHistogramSize);
 
-plot(do2)
-pause;
-
 % Look at frame histogram.
-dendrogram(zo,0)
+figure(3), dendrogram(zo,0)
 pause;
+figure(3), dendrogram(zo, videoHistogramSize);
 
 % Show breakdown of frame sources.
 % A strong difference shows that the two video sequences are not alike.
 % Overlap suggests they are.
 frameHist =  showFrameSource([80 80],do2);
-bar(frameHist');
+figure(4), bar(frameHist');
